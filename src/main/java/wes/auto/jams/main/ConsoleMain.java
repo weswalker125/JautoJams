@@ -6,14 +6,17 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;
+//import org.apache.logging.log4j.Logger;
+
+import org.apache.commons.io.FileUtils;
 
 import wes.auto.jams.models.SimpleSong;
-import wes.auto.jams.utils.SongPrinter;
+import wes.auto.jams.utils.JamminUtils;
 
 public class ConsoleMain {
-	private static String _root = "/Users/wes/Music/Amazon Music/";
-	private static String DELIMITER = "/";
-	private static boolean PRINT = true;
+	//private static Logger log = Logger.getLogger(ConsoleMain.class);
+	private static String _root = "/Users/wes/Music/";
+	private static boolean PRINT = !true;
 	
 	public static void main(String... strings) {
 		menu();
@@ -26,11 +29,18 @@ public class ConsoleMain {
 		for(Iterator<SimpleSong> it = songs.iterator(); it.hasNext();) {
 			SimpleSong song = it.next();
 			if(!song.filepath.equalsIgnoreCase(song.getFormattedFilePath())) {
-				System.out.println(String.format("current: %s\r\nproposed:%s\r\n", song.filepath, song.getFormattedFilePath()));
+//				if (song.getCertainValidity()) {
+//					if(JamminUtils.moveFile(song.filepath, song.getFormattedFilePath())) {
+//						System.out.println(String.format("Failed to move file.\r\n\tcurrent: %s\r\n\tproposed:%s\r\n", song.filepath, song.getFormattedFilePath()));
+//					}
+//				} else {
+//					System.out.println(String.format("current: %s\r\nproposed:%s\r\n", song.filepath, song.getFormattedFilePath()));
+//				}
+				if(JamminUtils.moveFile(song.filepath, song.getFormattedFilePath())) {
+					System.out.println(String.format("Failed to move file.\r\n\tcurrent: %s\r\n\tproposed:%s\r\n", song.filepath, song.getFormattedFilePath()));
+				}
 			}
 		}
-		
-		
 	}
 	
 	private static List<SimpleSong> getAllSongs(String scanDirectory) {
@@ -60,7 +70,7 @@ public class ConsoleMain {
 		}
 		
 		if(PRINT) {
-			SongPrinter.Print(all);
+			JamminUtils.Print(all);
 		}
 		return all;
 	}
