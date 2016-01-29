@@ -15,11 +15,14 @@ import wes.auto.jams.utils.JamminUtils;
 
 public class ConsoleMain {
 	//private static Logger log = Logger.getLogger(ConsoleMain.class);
-	private static String _root = "/Users/wes/Music/";
+	//private static String _root = "/Users/wes/Music/";
+	private static String _root = "C:\\Users\\WesWa\\Music\\";
 	private static boolean PRINT = !true;
 	
 	public static void main(String... strings) {
+		System.out.println("JautoJams started");
 		menu();
+		System.out.println("JautoJams ended");
 	}
 	
 	private static void menu() {
@@ -36,6 +39,9 @@ public class ConsoleMain {
 //				} else {
 //					System.out.println(String.format("current: %s\r\nproposed:%s\r\n", song.filepath, song.getFormattedFilePath()));
 //				}
+				
+				System.out.println(String.format("current: %s\r\nproposed:%s\r\n", song.filepath, song.getFormattedFilePath()));
+				
 				if(JamminUtils.moveFile(song.filepath, song.getFormattedFilePath())) {
 					System.out.println(String.format("Failed to move file.\r\n\tcurrent: %s\r\n\tproposed:%s\r\n", song.filepath, song.getFormattedFilePath()));
 				}

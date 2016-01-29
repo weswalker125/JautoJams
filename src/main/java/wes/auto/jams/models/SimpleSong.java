@@ -1,6 +1,7 @@
 package wes.auto.jams.models;
 
 import java.io.File;
+import java.util.regex.Pattern;
 
 public class SimpleSong {
 	private final static String[] uglyPhrases = {"[Explicit]", "[+Digital Booklet]", "(Album Version)", "(Amazon MP3 Exclusive Version)"};
@@ -33,7 +34,7 @@ public class SimpleSong {
 	}
 	
 	public String getFormattedFilePath() {
-		String[] tokens = this.filepath.split(File.separator);
+		String[] tokens = this.filepath.split(Pattern.quote(File.separator));
 		tokens[tokens.length - 1] = String.format("%s %s.%s", getFormattedTrackNumber(), this.title,getFileExt());
 		tokens[tokens.length - 2] = this.album;
 		tokens[tokens.length - 3] = this.artist;
@@ -44,7 +45,7 @@ public class SimpleSong {
 	
 	public SimpleSong(String fullFilePath) {
 		
-		String[] tokens = fullFilePath.split(File.separator);
+		String[] tokens = fullFilePath.split(Pattern.quote(File.separator));
 		this.album = cleanPhrase(tokens[tokens.length - 2]);
 		this.artist = cleanPhrase(tokens[tokens.length - 3]);
 		this.filepath = fullFilePath.trim();
