@@ -25,6 +25,7 @@ dependencies {
 
 test {
     systemProperties 'property': 'value'
+	systemProperties 'ok': 'value1'
 }
 
 uploadArchives {
