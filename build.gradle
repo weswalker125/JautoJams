@@ -27,10 +27,6 @@ test {
     systemProperties 'property': 'value'
 }
 
-comp {
-	println "comp test"
-}
-
 uploadArchives {
     repositories {
        flatDir {
