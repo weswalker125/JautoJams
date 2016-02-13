@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.regex.Pattern;
 
 public class SimpleSong {
-	private final static String[] uglyPhrases = {"[Explicit]", "[+Digital Booklet]", "(Album Version)", "(Amazon MP3 Exclusive Version)"};
+	private final static String[] uglyPhrases = {"[Explicit]", "[+Digital Booklet]", "[+digital booklet]", "(Album Version)", "(Amazon MP3 Exclusive Version)"};
 			
 	public String title;
 	public String artist;

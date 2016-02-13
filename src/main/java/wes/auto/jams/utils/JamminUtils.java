@@ -27,6 +27,7 @@ public class JamminUtils {
 			FileUtils.copyFile(source, destination, true); 
 			try { FileUtils.forceDelete(source); }
 			catch (IOException ex) { System.out.println("Failed to delete file.\r\n\tError: " + ex.getMessage()); }
+			ret = true;
 		} 
 		catch (IOException ex) { System.out.println("Failed to copy file.\r\n\tError: " + ex.getMessage()); }
 		
