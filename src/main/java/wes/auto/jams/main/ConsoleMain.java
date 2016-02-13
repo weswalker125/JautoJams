@@ -30,7 +30,6 @@ public class ConsoleMain {
 		
 		System.out.println("1. Correct song files");
 		System.out.println("2. Find empty directories");
-		System.out.println("NOTHING");
 		//correctSongFiles();
 		findEmptyDirs(_root);
 		
