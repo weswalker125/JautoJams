@@ -1,6 +1,8 @@
 package wes.auto.jams.main;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -15,8 +17,8 @@ import wes.auto.jams.utils.JamminUtils;
 
 public class ConsoleMain {
 	//private static Logger log = Logger.getLogger(ConsoleMain.class);
-	//private static String _root = "/Users/wes/Music/";
-	private static String _root = "C:\\Users\\WesWa\\Music\\";
+	private static String _root = "/Users/wes/Music/";
+	//private static String _root = "C:\\Users\\WesWa\\Music\\";
 	private static boolean PRINT = !true;
 	
 	public static void main(String... strings) {
@@ -27,12 +29,37 @@ public class ConsoleMain {
 	
 	private static void menu() {
 		/* TODO: build menu using Spring tool */
+
+		System.out.println("Scan directory set to: " + _root);
+		System.out.print("Enter scan directory (ENTER for default):");
+		try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
+			String scanDir = br.readLine();
+			if(scanDir != null && !scanDir.isEmpty()) {
+				_root = scanDir;
+			}
+		} catch(Exception ex) {
+			System.out.println("Err: " + ex.getMessage());
+		}
 		
 		System.out.println("1. Correct song files");
 		System.out.println("2. Find empty directories");
-		//correctSongFiles();
-		findEmptyDirs(_root);
-		
+		System.out.print("Enter choice: ");
+		try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
+			String choice = "";
+
+			switch (choice) {
+				case "1":
+					correctSongFiles();
+					break;
+				case "2":
+					findEmptyDirs(_root);
+					break;
+				default:
+					break;
+			}
+		} catch(Exception ex) {
+			System.out.println("Err: " + ex.getMessage());
+		}
 	}
 	
 	private static void correctSongFiles() {
