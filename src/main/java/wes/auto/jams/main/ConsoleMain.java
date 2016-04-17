@@ -45,7 +45,7 @@ public class ConsoleMain {
 		System.out.println("2. Find empty directories");
 		System.out.print("Enter choice: ");
 		try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
-			String choice = "";
+			String choice = br.readLine();
 
 			switch (choice) {
 				case "1":
