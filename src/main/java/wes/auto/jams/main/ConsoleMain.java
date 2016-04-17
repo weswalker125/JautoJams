@@ -37,14 +37,10 @@ public class ConsoleMain {
 			if(scanDir != null && !scanDir.isEmpty()) {
 				_root = scanDir;
 			}
-		} catch(Exception ex) {
-			System.out.println("Err: " + ex.getMessage());
-		}
-		
-		System.out.println("1. Correct song files");
-		System.out.println("2. Find empty directories");
-		System.out.print("Enter choice: ");
-		try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
+
+			System.out.println("1. Correct song files");
+			System.out.println("2. Find empty directories");
+			System.out.print("Enter choice: ");
 			String choice = br.readLine();
 
 			switch (choice) {
@@ -57,6 +53,7 @@ public class ConsoleMain {
 				default:
 					break;
 			}
+
 		} catch(Exception ex) {
 			System.out.println("Err: " + ex.getMessage());
 		}
