@@ -1,25 +1,11 @@
-buildscript {
-    repositories {
-        mavenCentral()
-        mavenLocal()
-    }
-}
-
 plugins {
+	id 'org.springframework.boot' version '2.4.3'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
-	id 'idea'
-	id 'org.springframework.boot' version '1.5.3.RELEASE'
 }
 
-sourceCompatibility = 1.8
+sourceCompatibility = 11
 version = '1.0'
-jar {
-    manifest {
-        attributes 'Implementation-Title': 'JautoJams Console',
-                   'Implementation-Version': version,
-                    'Main-Class': 'wes.auto.jams.main.ConsoleMain'
-    }
-}
 
 repositories {
     mavenCentral()
@@ -27,24 +13,12 @@ repositories {
 }
 
 dependencies {
-    compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
-    compile "com.google.code.gson:gson:2.5"
-    compile 'org.apache.logging.log4j:log4j:2.5'
+    compile 'org.springframework.boot:spring-boot-starter'
+    compile 'com.google.code.gson:gson'
+    compile 'commons-collections:commons-collections:3.2'
     compile 'org.apache.commons:commons-io:1.3.2'
-    compile 'org.springframework.boot:spring-boot-starter-web:1.3.2.RELEASE'
-    compile 'org.ehcache:ehcache:3.0.0.m4'
-    testCompile group: 'junit', name: 'junit', version: '4.+'
 }
 
-test {
-    systemProperties 'property': 'value'
-	systemProperties 'ok': 'value12'
-}
-
-uploadArchives {
-    repositories {
-       flatDir {
-           dirs 'repos'
-       }
-    }
+bootJar {
+    mainClassName = 'wes.auto.jams.Main'
 }

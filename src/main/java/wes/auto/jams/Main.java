@@ -1,4 +1,4 @@
-package wes.auto.jams.main;
+package wes.auto.jams;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -8,26 +8,28 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;
-//import org.apache.logging.log4j.Logger;
-
-import org.apache.commons.io.FileUtils;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.CommandLineRunner;
 
 import wes.auto.jams.models.SimpleSong;
 import wes.auto.jams.utils.JamminUtils;
 
-public class ConsoleMain {
+@SpringBootApplication
+public class Main implements CommandLineRunner {
 	//private static Logger log = Logger.getLogger(ConsoleMain.class);
 	private static String _root = "/Users/wes/Music/";
 	//private static String _root = "C:\\Users\\WesWa\\Music\\";
 	private static boolean PRINT = !true;
 	
-	public static void main(String... strings) {
+	public static void main(String[] args) {
 		System.out.println("JautoJams console has started");
-		menu();
+		SpringApplication.run(Main.class, args);
 		System.out.println("JautoJams console has finished");
 	}
 	
-	private static void menu() {
+	@Override
+	public void run(String... args) {
 		/* TODO: build menu using Spring tool */
 
 		System.out.println("Scan directory set to: " + _root);
