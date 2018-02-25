@@ -35,7 +35,7 @@ public class SimpleSong {
 	
 	public String getFormattedFilePath() {
 		String[] tokens = this.filepath.split(Pattern.quote(File.separator));
-		tokens[tokens.length - 1] = String.format("%s %s.%s", getFormattedTrackNumber(), this.title,getFileExt());
+		tokens[tokens.length - 1] = String.format("%s %s.%s", getFormattedTrackNumber(), this.title, getFileExt());
 		tokens[tokens.length - 2] = this.album;
 		tokens[tokens.length - 3] = this.artist;
 		return String.join(File.separator, tokens);
@@ -97,7 +97,7 @@ public class SimpleSong {
 		}
 		
 		//replace multi-spaces
-		phrase = phrase.replace("  ", " ").replace("  ", " ");
+		phrase = phrase.replace("  ", " ").replace("  ", " ").replace("- ", "");
 		return phrase.trim();
 	}
 }
